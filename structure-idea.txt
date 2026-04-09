@@ -1,0 +1,72 @@
+f1-pace-analysis/
+│
+├── app/                        # Main application code
+│   ├── __init__.py
+│   │
+│   ├── data/                  # Data ingestion (FastF1 layer)
+│   │   ├── __init__.py
+│   │   ├── fetch.py           # Pull raw data from FastF1
+│   │   └── cache.py           # Handle caching
+│   │
+│   ├── processing/            # Core logic (MOST IMPORTANT)
+│   │   ├── __init__.py
+│   │   ├── clean.py           # Filter laps
+│   │   ├── normalize.py       # Normalize lap data
+│   │   ├── metrics.py         # Compute stats
+│   │   └── scoring.py         # Final driver ranking
+│   │
+│   ├── api/                   # Optional API layer (FastAPI)
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   │
+│   └── utils/
+│       ├── __init__.py
+│       └── config.py
+│
+├── cache/                     # Cached processed data
+│   └── (generated .pkl files)
+│
+├── scripts/                   # Entry scripts
+│   └── run_pipeline.py
+│
+├── requirements.txt
+├── README.md
+└── main.py                    # Entry point (optional API)
+
+
+f1-pace-analysis/
+│
+├── backend/
+│   ├── app/
+│   │   ├── data/
+│   │   ├── processing/
+│   │   ├── api/
+│   │   └── utils/
+│   ├── scripts/
+│   ├── main.py
+│   ├── requirements.txt
+│   └── venv/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── cache/
+├── docker-compose.yml   (optional later)
+└── README.md
+
+
+Step 3: Run Everything Locally
+Start backend:
+cd backend
+venv\Scripts\activate
+uvicorn main:app --reload
+Start frontend:
+cd frontend
+npm start
+
+Now:
+
+Backend → http://localhost:8000
+Frontend → http://localhost:3000
